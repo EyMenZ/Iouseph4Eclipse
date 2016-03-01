@@ -22,6 +22,8 @@ public class PlaygroundPart {
 
 	@PostConstruct
 	public void createControls(Composite parent) {
+		System.out.println(this.getClass().getSimpleName()
+				  + " @PostConstruct method called.");
 		parent.setLayout(new GridLayout(2, false));
 
 		text = new Text(parent, SWT.BORDER);

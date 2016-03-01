@@ -1,9 +1,15 @@
 package parts;
 
+import javax.annotation.PostConstruct;
+
+import org.eclipse.swt.widgets.Composite;
+
 public class OverviewPart {
 
-	public OverviewPart() {
-		System.out.println("Overview");
+	@PostConstruct
+	public void createControls(Composite parent) {
+	  System.out.println(this.getClass().getSimpleName()
+	  + " @PostConstruct method called.");
 	}
 
 }

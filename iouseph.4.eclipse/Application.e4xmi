@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="_UEXS4N8nEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_YKcXcN8nEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.rootlayout" label="Iouseph" x="100" y="100" width="800" height="500">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_bHTUsN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspectivestack.0">
+      <children xsi:type="advanced:Perspective" xmi:id="_gFNZIN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspective.1" label="1">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_4O25sN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.0" horizontal="true">
+          <children xsi:type="basic:PartStack" xmi:id="_C3tHsN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.0">
+            <children xsi:type="basic:Part" xmi:id="_DVIOEN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.0" contributionURI="bundleclass://iouseph.4.eclipse/parts.OverviewPart" label="Overview"/>
+          </children>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_D28-MN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.1">
+            <children xsi:type="basic:PartStack" xmi:id="_ESGpIN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.1">
+              <children xsi:type="basic:Part" xmi:id="_Do1NMN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.1" contributionURI="bundleclass://iouseph.4.eclipse/parts.DetailsPart" label="Details"/>
+            </children>
+            <children xsi:type="basic:PartStack" xmi:id="_GCH1QN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.2">
+              <children xsi:type="basic:Part" xmi:id="_D6mSoN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.2" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlaygroundPart" label="Playground"/>
+            </children>
+          </children>
+        </children>
+      </children>
+    </children>
+  </children>
+  <addons xmi:id="_UEXS4d8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_UEXS4t8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_UEXS498nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_UEXS5N8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_UEXS5d8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_UEXS5t8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_UEXS598nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+</application:Application>

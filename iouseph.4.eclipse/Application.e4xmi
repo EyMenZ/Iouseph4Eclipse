@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_UEXS4N8nEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.application">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_UEXS4N8nEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.application">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_YKcXcN8nEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.rootlayout" label="Iouseph" x="100" y="100" width="800" height="500">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_bHTUsN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspectivestack.0">
       <children xsi:type="advanced:Perspective" xmi:id="_gFNZIN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspective.first" label="first">
         <children xsi:type="basic:PartSashContainer" xmi:id="_4O25sN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.0" horizontal="true">
           <children xsi:type="basic:PartStack" xmi:id="_C3tHsN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.0">
             <children xsi:type="basic:Part" xmi:id="_DVIOEN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.0" contributionURI="bundleclass://iouseph.4.eclipse/parts.OverviewPart" label="Overview">
-              <toolbar xmi:id="_vE5GoN_7EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.toolbar.0"/>
+              <menus xsi:type="menu:PopupMenu" xmi:id="_AXUrwOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.popupmenu.popup" label="popup">
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_AtQfgOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.testpopupmenu" label="NewPopupMenu" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
+              </menus>
+              <toolbar xmi:id="_w2dFQOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.0">
+                <children xsi:type="menu:DirectToolItem" xmi:id="_zKTXMOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.directtoolitem.directti" label="directTI" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler"/>
+                <children xsi:type="menu:ToolControl" xmi:id="_QQfqQOCIEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolcontrol.0" contributionURI="bundleclass://iouseph.4.eclipse/toolcontrols.SearchToolItem">
+                  <persistedState key="key" value="value"/>
+                </children>
+              </toolbar>
             </children>
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_D28-MN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.1">
@@ -21,15 +29,38 @@
       </children>
     </children>
     <mainMenu xmi:id="_MvbK8N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.menu.0">
-      <children xsi:type="menu:Menu" xmi:id="_Y42a4N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.menu.1">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZLx98N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handledmenuitem.save" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
+      <children xsi:type="menu:Menu" xmi:id="_Y42a4N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.menu.file" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZLx98N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handledmenuitem.save" label="save" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_aQTG0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.remove" label="remove" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eNMaMOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.new" label="new" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_f9tVkOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.menu.edit" label="Edit">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_gg4UEOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.test" label="test" command="_QWP9IN_9EeWRw-42DY_dFQ">
+          <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_m2kW4OCWEeW3saw9AlrhWQ" coreExpressionId="iouseph.4.eclipse.selectionset"/>
+        </children>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_iImf0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.menu.options" label="Options">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ihL-8OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.exit" label="exit" command="_MW7n4N_9EeWRw-42DY_dFQ"/>
       </children>
     </mainMenu>
+    <trimBars xmi:id="_WA3cgOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.trimbar.left" side="Left">
+      <children xsi:type="menu:ToolBar" xmi:id="_fHLgwOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.file">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mTTJMOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledtoolitem.save" label="Save" command="_Kz0PUN_9EeWRw-42DY_dFQ">
+          <parameters xmi:id="_gZRqsOCTEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.parameter.0" name="iouseph.4.eclipse.commandparameter.0" value="iouseph.4.eclipse.perspective.first"/>
+        </children>
+      </children>
+    </trimBars>
   </children>
   <handlers xmi:id="_FNPy8N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handler.save" contributionURI="bundleclass://iouseph.4.eclipse/handlers.SaveAllHandler" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_ml05EOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.remove" contributionURI="bundleclass://iouseph.4.eclipse/handlers.RemoveHandler" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_pUzn0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.new" contributionURI="bundleclass://iouseph.4.eclipse/handlers.NewHandler" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_rQppcOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.test" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler" command="_QWP9IN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_tVcLsOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.exit" contributionURI="bundleclass://iouseph.4.eclipse/handlers.ExitHandler" command="_MW7n4N_9EeWRw-42DY_dFQ"/>
   <commands xmi:id="_Kz0PUN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.save" commandName="save"/>
   <commands xmi:id="_MW7n4N_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.exit" commandName="exit"/>
-  <commands xmi:id="_NTTJgN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.new" commandName="new"/>
+  <commands xmi:id="_NTTJgN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.new" commandName="new">
+    <parameters xmi:id="_fzlZIOCSEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.commandparameter.0" name="Command Parameter 0"/>
+  </commands>
   <commands xmi:id="_OPXwMN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.remove" commandName="remove"/>
   <commands xmi:id="_QWP9IN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.test" commandName="test"/>
   <addons xmi:id="_UEXS4d8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>

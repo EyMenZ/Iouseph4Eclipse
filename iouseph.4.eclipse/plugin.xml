@@ -31,5 +31,23 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="iouseph.4.eclipse.selectionset">
+      <!--with variable="org.eclipse.ui.selection">
+    <iterate ifEmpty="false" operator="or">
+      <instanceof value="model.Track">
+      </instanceof>      
+    </iterate>
+    </with-->
+    <with
+               variable="myactivePartId">
+            <equals
+                  value="parts.OverviewPart">
+            </equals>
+         </with>      
+  </definition>
+   </extension>
 
 </plugin>

@@ -18,6 +18,8 @@ public class OverviewPart {
 		// register context menu on the table
 	    menuService.registerContextMenu(viewer.getControl(),
 	        "iouseph.4.eclipse.popupmenu.popup");
+
+
 	}
 
 }

@@ -2,6 +2,8 @@ package parts;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +17,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventConstants;
+import org.osgi.service.event.EventHandler;
 
 public class PlaygroundPart {
 	private Text text;
@@ -56,10 +63,47 @@ public class PlaygroundPart {
 		browser = new Browser(parent, SWT.NONE);
 		browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 
+		/*BundleContext ctx = FrameworkUtil.getBundle(PlaygroundPart.class).getBundleContext();
+	    EventHandler handler = new EventHandler() {
+	      public void handleEvent(final Event event) {
+	        if( parent.getDisplay().getThread() == Thread.currentThread() ) {
+	          text.setText(event.getProperty("DATA").toString());
+	        } else {
+	          parent.getDisplay().syncExec(new Runnable() {
+	            public void run() {
+	            	text.setText(event.getProperty("DATA").toString());
+	            }
+	          });
+	        }
+	      }
+	    };
+
+	    Dictionary<String,String> properties = new Hashtable<String, String>();
+	    properties.put(EventConstants.EVENT_TOPIC, "viewcommunication/*");
+	    ctx.registerService(EventHandler.class, handler, properties);*/
+
 	}
 
 	@Focus
 	public void onFocus() {
 		text.setFocus();
 	}
+
+	public Text getText() {
+		return text;
+	}
+
+	public void setText(Text text) {
+		this.text = text;
+	}
+
+	public Browser getBrowser() {
+		return browser;
+	}
+
+	public void setBrowser(Browser browser) {
+		this.browser = browser;
+	}
+
+
 }

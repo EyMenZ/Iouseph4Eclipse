@@ -1,20 +1,15 @@
 package model;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Track {
 
-	private StringProperty id;
-	private StringProperty title;
-	private StringProperty externalUrl;
-	private FloatProperty duration;
-	private StringProperty artist;
-	private StringProperty album;
-	private StringProperty image;
-	private StringProperty source;
+	private String id;
+	private String title;
+	private String externalUrl;
+	private float duration;
+	private String artist;
+	private String album;
+	private String image;
+	private String source;
 
 	public Track() {
 		this(null, null, null, 0, null, null, null, null);
@@ -25,87 +20,87 @@ public class Track {
 	public Track(String id, String title, String externalUrl, float duration,
 			String artist, String album, String image, String source) {
 		super();
-		this.id = new SimpleStringProperty(id);
-		this.title = new SimpleStringProperty(title);
-		this.externalUrl = new SimpleStringProperty(externalUrl);
-		this.duration = new SimpleFloatProperty(duration);
-		this.artist = new SimpleStringProperty(artist);
-		this.album = new SimpleStringProperty(album);
-		this.image = new SimpleStringProperty(image);
-		this.source = new SimpleStringProperty(source);
+		this.id = id;
+		this.title = title;
+		this.externalUrl = externalUrl;
+		this.duration = duration;
+		this.artist = artist;
+		this.album = album;
+		this.image = image;
+		this.source = source;
 	}
 
 
 
 	public String getId() {
-		return id.get();
+		return id;
 	}
 
 	public void setId(String id) {
-		this.id.set(id);
+		this.id = id;
 	}
 
 	public String getTitle() {
-		return title.get();
+		return title;
 	}
 
 	public void setTitle(String title) {
-		this.title.set(title);
+		this.title = title;
 	}
 
 	public String getExternalUrl() {
-		return externalUrl.get();
+		return externalUrl;
 	}
 
 	public void setExternalUrl(String externalUrl) {
-		this.externalUrl.set(externalUrl);
+		this.externalUrl = externalUrl;
 	}
 
 	public float getDuration() {
-		return duration.get();
+		return duration;
 	}
 
 	public void setDuration(float duration) {
-		this.duration.set(duration);
+		this.duration = duration;
 	}
 
 	public String getArtist() {
-		return artist.get();
+		return artist;
 	}
 
 	public void setArtist(String artist) {
-		this.artist.set(artist);
+		this.artist = artist;
 	}
 
 	public String getAlbum() {
-		return album.get();
+		return album;
 	}
 
 	public void setAlbum(String album) {
-		this.album.set(album);
+		this.album = album;
 	}
 
 	public String getImage() {
-		return image.get();
+		return image;
 	}
 
 	public void setImage(String image) {
-		this.image.set(image);
+		this.image = image;
 	}
 
 	public String getSource() {
-		return source.get();
+		return source;
 	}
 
 	public void setSource(String source) {
-		this.source.set(source);
+		this.source = source;
 	}
 
 	@Override
 	public String toString() {
-		return /*"Track [id=" + id.get() + ", title=" + title.get() + ", externalUrl=" + externalUrl.get() + ", duration="
-				+ duration.get() + ", artist=" + artist.get() + ", album=" + album.get() + ", image=" + image.get()
-				+ ", source=" + source.get() + "]"*/title.get()+"\n"+ artist.get()+"\n"+album.get();
+		return /*"Track [id=" + id + ", title=" + title + ", externalUrl=" + externalUrl + ", duration="
+				+ duration + ", artist=" + artist + ", album=" + album + ", image=" + image
+				+ ", source=" + source + "]"*/title+"\n "+ artist+"\n "+album;
 	}
 
 }

@@ -12,13 +12,10 @@ public class OverviewPart {
 	@PostConstruct
 	public void createControls(Composite parent, EMenuService menuService) {
 		TableViewer viewer = new TableViewer(parent, SWT.FULL_SELECTION | SWT.MULTI);
-		System.out.println(this.getClass().getSimpleName()
-			+ " @PostConstruct method called.");
+		System.out.println(this.getClass().getSimpleName() + " @PostConstruct method called.");
 
 		// register context menu on the table
-	    menuService.registerContextMenu(viewer.getControl(),
-	        "iouseph.4.eclipse.popupmenu.popup");
-
+	    menuService.registerContextMenu(viewer.getControl(), "iouseph.4.eclipse.popupmenu.popup");
 
 	}
 

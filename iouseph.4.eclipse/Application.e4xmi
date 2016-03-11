@@ -23,6 +23,7 @@
             </children>
             <children xsi:type="basic:PartStack" xmi:id="_GCH1QN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.2">
               <children xsi:type="basic:Part" xmi:id="_D6mSoN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.2" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlaygroundPart" label="Playground"/>
+              <children xsi:type="basic:Part" xmi:id="_ecbeIOfTEeWwuYCBzu0gwQ" elementId="iouseph.4.eclipse.part.test" contributionURI="bundleclass://iouseph.4.eclipse/parts.TestPart" label="test"/>
             </children>
           </children>
         </children>

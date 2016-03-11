@@ -39,22 +39,7 @@ public class DetailsPart {
 		public void selectionChanged(SelectionChangedEvent e) {
 			System.out.println(e.getSelection());
 
-			/*BundleContext ctx = FrameworkUtil.getBundle(DetailsPart.class).getBundleContext();
-	        ServiceReference<EventAdmin> ref = ctx.getServiceReference(EventAdmin.class);
-	        EventAdmin eventAdmin = ctx.getService(ref);
-	        Map<String,Object> properties = new HashMap<String, Object>();
-	        properties.put("DATA", e.getSelection());
-
-	        Event event = new Event("viewcommunication/syncEvent", properties);
-	        eventAdmin.sendEvent(event);
-
-	        event = new Event("viewcommunication/asyncEvent", properties);
-	        eventAdmin.postEvent(event);*/
-
-			// asynchronously
-			eventBroker.post(IEventConstants.PLAY_TRACK,
-			    new Event(IEventConstants.PLAY_TRACK,
-			        new HashMap<String, String>()));
+			eventBroker.post(IEventConstants.PLAY_TRACK, e.getSelection());
 
 		}
 	});

@@ -13,6 +13,7 @@
       </vmArgsMac>
    </launcherArgs>
 
+
    <launcher name="Deezer 4 Eclipse">
       <solaris/>
       <win useIco="false">
@@ -35,6 +36,7 @@
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.ui.workbench.addons.swt" autoStart="false" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />

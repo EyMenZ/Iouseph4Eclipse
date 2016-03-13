@@ -6,5 +6,6 @@ public interface IEventConstants extends EventConstants{
 
 	String PLAY_TRACK = "PLAY";
 
-	//String
+	String SHOW_TRACKS = "tracks";
+
 }

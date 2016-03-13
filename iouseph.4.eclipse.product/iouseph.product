@@ -3,7 +3,6 @@
 
 <product name="eclipse" uid="lIdMte3iMa3andouMennou7ad" id="iouseph.4.eclipse.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -16,7 +15,6 @@
 
    <windowImages/>
 
-
    <launcher name="Iouseph 4 Eclipse">
       <solaris/>
       <win useIco="false">
@@ -24,10 +22,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>

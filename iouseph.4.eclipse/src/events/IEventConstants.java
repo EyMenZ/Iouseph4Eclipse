@@ -8,4 +8,6 @@ public interface IEventConstants extends EventConstants{
 
 	String SHOW_TRACKS = "tracks";
 
+	String SHOW_PLAYLISTS = "playlists";
+
 }

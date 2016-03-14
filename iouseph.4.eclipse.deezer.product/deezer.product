@@ -13,7 +13,8 @@
       </vmArgsMac>
    </launcherArgs>
 
-
+   <splash
+      location="iouseph.4.eclipse.deezer" />
    <launcher name="Deezer 4 Eclipse">
       <solaris/>
       <win useIco="false">

@@ -31,13 +31,11 @@ public class SearchPart {
 		text = new Text(parent, SWT.BORDER);
 		text.setMessage("Track");
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
 		text.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
@@ -53,6 +51,7 @@ public class SearchPart {
 		button.setText("Search");
 		button.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 2));
 		button.addSelectionListener(new SelectionAdapter() {
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				eventBroker.post(IEventConstants.SHOW_TRACKS, text.getText());

@@ -10,10 +10,8 @@
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_AtQfgOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.testpopupmenu" label="NewPopupMenu" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
               </menus>
               <toolbar xmi:id="_w2dFQOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.0">
-                <children xsi:type="menu:DirectToolItem" xmi:id="_zKTXMOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.directtoolitem.directti" label="directTI" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler"/>
-                <children xsi:type="menu:ToolControl" xmi:id="_QQfqQOCIEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolcontrol.0" contributionURI="bundleclass://iouseph.4.eclipse/toolcontrols.SearchToolItem">
-                  <persistedState key="key" value="value"/>
-                </children>
+                <children xsi:type="menu:DirectToolItem" xmi:id="_zKTXMOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.directtoolitem.Search" label="Search" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler"/>
+                <children xsi:type="menu:ToolControl" xmi:id="_QQfqQOCIEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolcontrol.0" contributionURI="bundleclass://iouseph.4.eclipse/toolcontrols.SearchToolItem"/>
               </toolbar>
             </children>
           </children>
@@ -31,12 +29,12 @@
     </children>
     <mainMenu xmi:id="_MvbK8N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_Y42a4N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.menu.file" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZLx98N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handledmenuitem.save" label="save" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_aQTG0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.remove" label="remove" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_eNMaMOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.new" label="new" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZLx98N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handledmenuitem.clearlists" label="Clear lists" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_aQTG0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.clearall" label="Clear all" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_eNMaMOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.search" label="Search" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_f9tVkOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.menu.edit" label="Edit">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_gg4UEOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.test" label="test" command="_QWP9IN_9EeWRw-42DY_dFQ">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_gg4UEOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.test" label="test">
           <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_m2kW4OCWEeW3saw9AlrhWQ" coreExpressionId="iouseph.4.eclipse.selectionset"/>
         </children>
       </children>
@@ -46,24 +44,22 @@
     </mainMenu>
     <trimBars xmi:id="_WA3cgOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.trimbar.left" side="Left">
       <children xsi:type="menu:ToolBar" xmi:id="_fHLgwOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.file">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_mTTJMOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledtoolitem.save" label="Save" command="_Kz0PUN_9EeWRw-42DY_dFQ">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mTTJMOB_EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledtoolitem.clearlists" label="Clear Lists" command="_Kz0PUN_9EeWRw-42DY_dFQ">
           <parameters xmi:id="_gZRqsOCTEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.parameter.0" name="iouseph.4.eclipse.commandparameter.0" value="iouseph.4.eclipse.perspective.first"/>
         </children>
       </children>
     </trimBars>
   </children>
-  <handlers xmi:id="_FNPy8N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handler.save" contributionURI="bundleclass://iouseph.4.eclipse/handlers.SaveAllHandler" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
-  <handlers xmi:id="_ml05EOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.remove" contributionURI="bundleclass://iouseph.4.eclipse/handlers.RemoveHandler" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
-  <handlers xmi:id="_pUzn0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.new" contributionURI="bundleclass://iouseph.4.eclipse/handlers.NewHandler" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
-  <handlers xmi:id="_rQppcOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.test" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler" command="_QWP9IN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_FNPy8N_-EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.handler.clearlists" contributionURI="bundleclass://iouseph.4.eclipse/handlers.ClearListsHandler" command="_Kz0PUN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_ml05EOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.clearall" contributionURI="bundleclass://iouseph.4.eclipse/handlers.ClearAllHandler" command="_OPXwMN_9EeWRw-42DY_dFQ"/>
+  <handlers xmi:id="_pUzn0OB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.search" contributionURI="bundleclass://iouseph.4.eclipse/handlers.SearchHandler" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
   <handlers xmi:id="_tVcLsOB-EeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handler.exit" contributionURI="bundleclass://iouseph.4.eclipse/handlers.ExitHandler" command="_MW7n4N_9EeWRw-42DY_dFQ"/>
-  <commands xmi:id="_Kz0PUN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.save" commandName="save"/>
+  <commands xmi:id="_Kz0PUN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.clearlists" commandName="Clear Lists"/>
   <commands xmi:id="_MW7n4N_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.exit" commandName="exit"/>
-  <commands xmi:id="_NTTJgN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.new" commandName="new">
-    <parameters xmi:id="_fzlZIOCSEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.commandparameter.0" name="Command Parameter 0"/>
+  <commands xmi:id="_NTTJgN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.search" commandName="Search">
+    <parameters xmi:id="_x5Vo8OonEeWSWMOSfBuaBg" elementId="iouseph.4.eclipse.commandparameter.0" name="Command Parameter 0"/>
   </commands>
-  <commands xmi:id="_OPXwMN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.remove" commandName="remove"/>
-  <commands xmi:id="_QWP9IN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.test" commandName="test"/>
+  <commands xmi:id="_OPXwMN_9EeWRw-42DY_dFQ" elementId="iouseph.4.eclipse.command.clearall" commandName="Clear all"/>
   <addons xmi:id="_UEXS4d8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_UEXS4t8nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_UEXS498nEeWKZb7NKThiDg" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

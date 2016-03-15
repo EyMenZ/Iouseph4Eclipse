@@ -5,15 +5,16 @@ import org.eclipse.e4.core.di.annotations.Execute;
 
 import model.Track;
 
-public class NewHandler {
+public class SearchHandler {
 
 	@Execute
 	public void execute(IEclipseContext context) {
 
 		  System.out.println((this.getClass().getSimpleName() + " called"));
 
-		  Track track = new Track();
+		  //Track track = new Track();
 	  // put an example value in the context
 	  context.set("myactivePartId",  "parts.OverviewPart");
+
 	}
 }

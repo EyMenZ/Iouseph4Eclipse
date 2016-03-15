@@ -31,6 +31,9 @@ public class PlayerPart {
 		album.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		artist = new Label(parent, SWT.NONE);
 		artist.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		title.setText("Title");
+		album.setText("Album");
+		artist.setText("Artist");
 		browser = new Browser(parent, SWT.NONE);
 		browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
 	}

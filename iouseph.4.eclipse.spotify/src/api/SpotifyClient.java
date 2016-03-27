@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import model.Playlist;
@@ -88,7 +89,12 @@ public class SpotifyClient implements Iapi {
 		String encodedBytes = Base64.getEncoder().encodeToString((client_id + ":" + client_secret).getBytes());
 
 		JSONObject res_json = NetworkWrapper.post(url, body_args, "Authorization", "Basic " + encodedBytes);
-		access_token = res_json.getString("access_token");
+		try {
+			access_token = res_json.getString("access_token");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//stopServer();
 
 	}

@@ -1,16 +1,22 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playlist {
+public class Playlist implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String title;
 	private String owner;
 	private String source;
 	private String url;
 	private List<Track> tracks;
+	private User user;
 
 	public Playlist() {
 		this(null, null, null, null, null,null);
@@ -106,5 +112,19 @@ public class Playlist {
 
 	public void setUrl(String myurl) {
 		this.url = myurl;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

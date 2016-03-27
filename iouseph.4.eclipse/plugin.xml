@@ -37,7 +37,7 @@
     <with
                variable="myactivePartId">
             <equals
-                  value="parts.OverviewPart">
+                  value="parts.SearchPart">
             </equals>
          </with>
   </definition>

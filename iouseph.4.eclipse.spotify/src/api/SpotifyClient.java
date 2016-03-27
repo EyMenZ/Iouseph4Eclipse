@@ -70,7 +70,10 @@ public class SpotifyClient implements Iapi {
 
 		return url;
 	}
-
+	/**
+	 *	Cette methode est appele par le serveur lors de la reception du code d'autorisation, puis recupere l'access token
+	 * @param code_retrieved
+	 */
 	public void retreive_token(String code_retrieved) {
 		String url = host + "/api/token";
 		// recuperation de la partie qui nous importe
@@ -100,10 +103,8 @@ public class SpotifyClient implements Iapi {
 		// stopServer();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see modele.Iapi#get_personnal_info()
+	/**
+	 * CETTE methode permet de recuperer les informations personnelles de l'utilisateur depuis son compte
 	 */
 	@Override
 	public User get_personnal_info() {
@@ -139,10 +140,8 @@ public class SpotifyClient implements Iapi {
 		return this.parser.userParse(NetworkWrapper.get(url));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see modele.Iapi#get_search(java.lang.String)
+	/**
+	 * effectue une rcherche des tracks selon un mot cle
 	 */
 	@Override
 	public List<Track> get_search(String search) {
@@ -162,6 +161,7 @@ public class SpotifyClient implements Iapi {
 	}
 
 	/**
+	 * cette methode recupere les tracks de l'utilisateur
 	 * @return
 	 *
 	 */

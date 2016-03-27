@@ -1,0 +1,165 @@
+package model;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+public class AccountManager {
+	private DocumentBuilderFactory factory;
+	private DocumentBuilder builder;
+	// pour permettre un retracage facile la cle sera le username
+	private Map<String,User> usersInformations=new HashMap<String,User>();
+	/**
+	 * Constructeur par defaut
+	 */
+	public AccountManager()
+	{
+		factory = DocumentBuilderFactory.newInstance();
+		try {
+			builder = factory.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * Verfie si le fichier contenant les informations des utilisateurs existe
+	 * @return
+	 */
+	private boolean AccountsFileExists()
+	{
+		return new File("../Accounts", "accounts.xml").exists();
+	}
+	/**
+	 * La methode charge les informations des utilisateurs dans la map.
+	 */
+	// cela est fait independaement pour ne pas avoir a charger a chaque fois que l'utilisateur essaie un username
+	public void loadAccountsInformations()
+	{
+		if(!this.AccountsFileExists())
+		{
+			return ;
+		}
+		// TODO a reverifier
+
+		try {
+			File fXmlFile = new File("../Accounts/accounts.xml");
+			Document doc = builder.parse(fXmlFile);
+			NodeList nList= doc.getElementsByTagName("User");
+
+			for(int i=0;i<nList.getLength();i++)
+			{
+				Node node=nList.item(i);
+
+				if(node.getNodeType()==Node.ELEMENT_NODE)
+				{
+					User user=new User();
+					Element elem = (Element) node;
+					user.setId(elem.getAttribute("id"));
+					user.setUsername(elem.getAttribute("username"));
+					user.setPassword(elem.getAttribute("password"));
+					usersInformations.put(user.getUsername(), user);
+				}
+			}
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	/**
+	 * Methode qui permet l'authentification
+	 * @param Username
+	 * @param password
+	 * @return true si les informations sont valides, false sinon
+	 */
+	public boolean Authentification(String Username, String password)
+	{
+		if(usersInformations.containsKey(Username))
+		{
+			if(usersInformations.get(Username).getPassword().contentEquals(password))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+	/**
+	 * methode permetant a un nouvel utilisateur de s'enregistrer
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public boolean Enregistrement(String username, String password)
+	{
+		if(usersInformations.containsKey(username))
+			return false;
+
+		User user=new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		usersInformations.put(username, user);
+
+		return true;
+	}
+	/**
+	 * methode permettant d'enregistrer les informations en format XML
+	 */
+	public void saveAccountsInformations()
+	{
+		if(usersInformations.size()==0)
+			return;
+
+		Document doc = builder.newDocument();
+		Element rootElement = doc.createElement("Accounts");
+		for (Map.Entry<String, User> user : usersInformations.entrySet())
+		{
+			Element elem = doc.createElement("User");
+
+			rootElement.appendChild(elem);
+			elem.setAttribute("id", user.getValue().getUsername());
+			elem.setAttribute("username", user.getValue().getUsername());
+			elem.setAttribute("password", user.getValue().getPassword());
+		}
+
+		try {
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File("../Accounts/accounts.xml"));
+			transformer.transform(source, result);
+			System.out.println("File saved!");
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+

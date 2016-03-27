@@ -12,6 +12,8 @@ public class User{
 	//TODO cette classe sera implementee dans une prochaine version
 	private UUID uid = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
 	private String id_;
+	private String username;
+	private String password;
 	private Map<String,Playlist> playlists=new HashMap<String, Playlist>();
 
 	/**
@@ -20,6 +22,8 @@ public class User{
 	public User()
 	{
 		id_=uid.randomUUID().toString();
+		username=new String();
+		password=new String();
 	}
 
 	/**
@@ -85,5 +89,39 @@ public class User{
 	{
 		playlists.clear();
 	}
+	/**
+	 * accesseur au nom d'utilisateur
+	 * @return
+	 */
+
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * setter du nom d'utilisateur
+	 * @param username
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * getter du mot de passe
+	 * @return
+	 */
+
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * setter du mot de passe
+	 * @param password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 }

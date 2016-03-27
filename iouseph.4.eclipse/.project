@@ -29,22 +29,22 @@
 		<link>
 			<name>httpclient-4.5.1.jar</name>
 			<type>1</type>
-			<location>/home/koki/git/Iouseph4Eclipse/httpclient-4.5.1.jar</location>
+			<location>D:/home/koki/git/Iouseph4Eclipse/httpclient-4.5.1.jar</location>
 		</link>
 		<link>
 			<name>httpcore-4.4.4.jar</name>
 			<type>1</type>
-			<location>/home/koki/git/Iouseph4Eclipse/httpcore-4.4.4.jar</location>
+			<location>D:/home/koki/git/Iouseph4Eclipse/httpcore-4.4.4.jar</location>
 		</link>
 		<link>
 			<name>java-json.jar</name>
 			<type>1</type>
-			<location>/home/koki/git/Iouseph4Eclipse/java-json.jar</location>
+			<location>D:/home/koki/git/Iouseph4Eclipse/java-json.jar</location>
 		</link>
 		<link>
 			<name>org.eclipse.jface.jar</name>
 			<type>1</type>
-			<location>/home/koki/git/Iouseph4Eclipse/org.eclipse.jface.jar</location>
+			<location>D:/home/koki/git/Iouseph4Eclipse/org.eclipse.jface.jar</location>
 		</link>
 	</linkedResources>
 </projectDescription>

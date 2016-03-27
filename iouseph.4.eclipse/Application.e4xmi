@@ -4,24 +4,25 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_bHTUsN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspectivestack.0">
       <children xsi:type="advanced:Perspective" xmi:id="_gFNZIN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.perspective.iouseph" label="iouseph">
         <children xsi:type="basic:PartSashContainer" xmi:id="_4O25sN8oEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.0" horizontal="true">
-          <children xsi:type="basic:PartStack" xmi:id="_C3tHsN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.0">
-            <children xsi:type="basic:Part" xmi:id="_DVIOEN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.search" contributionURI="bundleclass://iouseph.4.eclipse/parts.SearchPart" label="Search">
-              <menus xsi:type="menu:PopupMenu" xmi:id="_AXUrwOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.popupmenu.popup" label="popup">
-                <children xsi:type="menu:HandledMenuItem" xmi:id="_AtQfgOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.testpopupmenu" label="NewPopupMenu" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
-              </menus>
-              <toolbar xmi:id="_w2dFQOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.0">
-                <children xsi:type="menu:DirectToolItem" xmi:id="_zKTXMOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.directtoolitem.Search" label="Search" contributionURI="bundleclass://iouseph.4.eclipse/handlers.TestHandler"/>
-                <children xsi:type="menu:ToolControl" xmi:id="_QQfqQOCIEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolcontrol.0" contributionURI="bundleclass://iouseph.4.eclipse/toolcontrols.SearchToolItem"/>
-              </toolbar>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_vH5wwPRnEeWmQ5tw3yc5Dg" elementId="iouseph.4.eclipse.partsashcontainer.2">
+            <children xsi:type="basic:PartStack" xmi:id="_C3tHsN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.0">
+              <children xsi:type="basic:Part" xmi:id="_DVIOEN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.search" contributionURI="bundleclass://iouseph.4.eclipse/parts.SearchPart" label="Search">
+                <menus xsi:type="menu:PopupMenu" xmi:id="_AXUrwOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.popupmenu.popup" label="popup">
+                  <children xsi:type="menu:HandledMenuItem" xmi:id="_AtQfgOCAEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.handledmenuitem.testpopupmenu" label="NewPopupMenu" command="_NTTJgN_9EeWRw-42DY_dFQ"/>
+                </menus>
+                <toolbar xmi:id="_w2dFQOCHEeW3saw9AlrhWQ" elementId="iouseph.4.eclipse.toolbar.0"/>
+              </children>
+            </children>
+            <children xsi:type="basic:PartStack" xmi:id="_GCH1QN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.2">
+              <children xsi:type="basic:Part" xmi:id="_D6mSoN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.player" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlayerPart" label="Player"/>
             </children>
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_D28-MN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partsashcontainer.1">
             <children xsi:type="basic:PartStack" xmi:id="_ESGpIN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.1">
               <children xsi:type="basic:Part" xmi:id="_Do1NMN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.tracks" contributionURI="bundleclass://iouseph.4.eclipse/parts.TracksPart" label="Tracks"/>
-              <children xsi:type="basic:Part" xmi:id="_hMFJ0OoZEeWSWMOSfBuaBg" elementId="iouseph.4.eclipse.part.playlist" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlaylistsPart" label="Playlists"/>
             </children>
-            <children xsi:type="basic:PartStack" xmi:id="_GCH1QN8pEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.partstack.2">
-              <children xsi:type="basic:Part" xmi:id="_D6mSoN8qEeWKZb7NKThiDg" elementId="iouseph.4.eclipse.part.player" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlayerPart" label="Player"/>
+            <children xsi:type="basic:PartStack" xmi:id="_pm-e0PRnEeWmQ5tw3yc5Dg" elementId="iouseph.4.eclipse.partstack.3">
+              <children xsi:type="basic:Part" xmi:id="_hMFJ0OoZEeWSWMOSfBuaBg" elementId="iouseph.4.eclipse.part.playlist" contributionURI="bundleclass://iouseph.4.eclipse/parts.PlaylistsPart" label="Playlists"/>
             </children>
           </children>
         </children>

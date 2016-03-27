@@ -4,71 +4,96 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import model.Playlist;
 import model.Track;
 import model.User;
 
-public class SpotifyParser implements IParser{
+public class SpotifyParser implements IParser {
 
 	@Override
 	public Track trackParse(JSONObject json) {
 		Track track = new Track();
-		track.setId(json.getString("id"));
-		track.setTitle(json.getString("name"));
-		track.setExternalUrl(json.getJSONObject("external_urls").getString("spotify"));
-		track.setArtist(json.getJSONArray("artists").getJSONObject(0).getString("name"));
-		track.setAlbum(json.getJSONObject("album").getString("name"));
-		track.setImage(json.getJSONObject("album").getJSONArray("images").getJSONObject(0).getString("url"));
-		track.setSource("Spotify");
+		try {
+			track.setId(json.getString("id"));
+			track.setTitle(json.getString("name"));
+			track.setExternalUrl(json.getJSONObject("external_urls").getString("spotify"));
+			track.setArtist(json.getJSONArray("artists").getJSONObject(0).getString("name"));
+			track.setAlbum(json.getJSONObject("album").getString("name"));
+			track.setImage(json.getJSONObject("album").getJSONArray("images").getJSONObject(0).getString("url"));
+			track.setSource("Spotify");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return track;
 	}
 
 	@Override
 	public List<Track> tracksParse(JSONObject json) {
 		List<Track> currentUserTracks = new ArrayList<Track>();
+		try {
+			JSONArray jsonobjectsArray = (JSONArray) json.get("items");
+			for (int i = 0; i < jsonobjectsArray.length(); i++) {
 
-		JSONArray jsonobjectsArray = (JSONArray) json.get("items");
-		for(int i=0;i<jsonobjectsArray.length();i++)
-		{
-			currentUserTracks.add(trackParse((jsonobjectsArray.getJSONObject(i)).getJSONObject("track")));
+				currentUserTracks.add(trackParse((jsonobjectsArray.getJSONObject(i)).getJSONObject("track")));
+
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return currentUserTracks;
 	}
 
-	public List<Track> tracksSearchedParse(JSONObject json)
-	{
+	public List<Track> tracksSearchedParse(JSONObject json) {
 		List<Track> currentUserTracks = new ArrayList<Track>();
-		json=json.getJSONObject("tracks");
-		JSONArray jsonobjectsArray = (JSONArray) json.get("items");
-		for(int i=0;i<jsonobjectsArray.length();i++)
-		{
-			currentUserTracks.add(trackParse(jsonobjectsArray.getJSONObject(i)));
+		try {
+			json = json.getJSONObject("tracks");
+			JSONArray jsonobjectsArray = (JSONArray) json.get("items");
+			for (int i = 0; i < jsonobjectsArray.length(); i++) {
+				currentUserTracks.add(trackParse(jsonobjectsArray.getJSONObject(i)));
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return currentUserTracks;
 	}
+
 	@Override
 	public Playlist playlistParse(JSONObject json) {
-		Playlist myplaylist=new Playlist();
-		myplaylist.setId(json.getString("id"));
+		Playlist myplaylist = new Playlist();
+		try {
+			myplaylist.setId(json.getString("id"));
 		myplaylist.setOwner(json.getJSONObject("owner").getString("id"));
 		myplaylist.setUrl(json.getJSONObject("tracks").getString("href"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return myplaylist;
 	}
 
 	@Override
 	public List<Playlist> playlistsParse(JSONObject json) {
 		List<Playlist> myPlaylists = new ArrayList<Playlist>();
-		JSONArray jsonobjectsArray = json.getJSONArray("items");
-		for(int i=0;i<jsonobjectsArray.length();i++)
-		{
+		JSONArray jsonobjectsArray;
+		try {
+			jsonobjectsArray = json.getJSONArray("items");
+
+		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 			myPlaylists.add(playlistParse(jsonobjectsArray.getJSONObject(i)));
+		}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return myPlaylists;
 	}
-
 
 	@Override
 	public List<Track> playlistIdParse(JSONObject json) {
@@ -87,5 +112,6 @@ public class SpotifyParser implements IParser{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

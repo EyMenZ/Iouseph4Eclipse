@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Playlist {
 
+	private String idUser_;
 	private String id;
 	private String title;
 	private String owner;
@@ -12,10 +13,21 @@ public class Playlist {
 	private String url;
 	private List<Track> tracks;
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public Playlist() {
 		this(null, null, null, null, null,null);
 	}
-
+/**
+ * Constructeur par parametres
+ * @param id
+ * @param title
+ * @param owner
+ * @param source
+ * @param tracks
+ * @param url
+ */
 	public Playlist(String id, String title, String owner, String source,
 			List<Track> tracks, String url) {
 		super();
@@ -30,6 +42,7 @@ public class Playlist {
 
 
 	/**
+	 * Cette methode retourne la liste des tracks contenue dans la playlist
 	 * @return
 	 */
 	public List<Track> getTracks() {
@@ -37,8 +50,9 @@ public class Playlist {
 	}
 
 	/**
+	 * Cette methode permet l'ajout d'un track au contenu de la playlist
 	 * @param track
-	 * @return
+	 * @return true en cas de succes, false sinon
 	 */
 	public boolean addTrack(Track track)
 	{
@@ -50,42 +64,77 @@ public class Playlist {
 	}
 
 	/**
+	 * Methode permettant de supprimer un track de la playlist
 	 * @param track
-	 * @return
+	 * @return true si le track a ete supprime, false sinon
 	 */
 	public boolean deleteTrack(Track track){
 		return tracks.remove(track);
 	}
 	/**
-	 *
+	 * Methode permettant de reinitialier la playlist
 	 */
 	public void clearPlaylist()
 	{
 		tracks.clear();
 	}
+
+	/**
+	 * la methode renvoit le titre de la playlist
+	 * @return
+	 */
 	public String getTitle() {
 		return title;
 	}
+
+	/**
+	 * methode permet d'attribuer un titre a la playlist
+	 * @param title
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	/**
+	 * methode qui retourne l'owner de la playlist
+	 * @return
+	 */
 	public String getOwner() {
 		return owner;
 	}
+	/**
+	 * methode permetant d'attribuer la valeur de l'owner de la playlist
+	 * @param owner
+	 */
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+	/**
+	 * methode permettant de retourner la source de la playlist
+	 * @return
+	 */
 	public String getSource() {
 		return source;
 	}
+	/**
+	 * methode permettant de specifier la source de la playlist
+	 * @param source
+	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
+	/**
+	 * methode retournant l'id de la playlist
+	 * @return
+	 */
 
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 *methode permettant d'attribuer un id a la playlist
+	 * @param id
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -95,16 +144,42 @@ public class Playlist {
 		return /*"Playlist [id=" + id + ", title=" + title + ", owner=" + owner
 				+ ", source=" + source + ", tracks=" + tracks + "]"*/title;
 	}
-
+	/**
+	 * methode permettant d'attribuer une list de tracks a la playlist
+	 * @param tracks
+	 */
 	public void setTracks(List<Track> tracks) {
 		this.tracks = tracks;
 	}
-
+	/**
+	 * methode permettant de recuperer l'url permettant de lancer la lecture de la playlist
+	 * @return
+	 */
 	public String getUrl() {
 		return url;
 	}
 
+	/**
+	 * methode permettant d'attribuer la valeur de l'url qui permet la lecture de la playlist
+	 * @param myurl
+	 */
 	public void setUrl(String myurl) {
 		this.url = myurl;
 	}
+	/**
+	 * methode permettant la recuperation de l'id de l'utilisateur proprietaire de la playlist
+	 * @return
+	 */
+	public String getIdUser() {
+		return idUser_;
+	}
+
+	/**
+	 * methode permettant de specifier la valeur de l'id du proprietaire de la playlist
+	 * @param idUser
+	 */
+	public void setIdUser(String idUser) {
+		this.idUser_ = idUser;
+	}
+
 }

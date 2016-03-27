@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import model.Playlist;
@@ -30,6 +31,8 @@ public class SpotifyClient implements Iapi {
 	}
 
 	/**
+	 * methode permettant de recuperer l'url d'authentification afin de jumeler les informations de l'utilisateur
+	 * met un serveur en ecoute pour recuperer le code d'acces
 	 * @throws Exception
 	 */
 	public String GetAuthorizationUrl() {
@@ -53,13 +56,13 @@ public class SpotifyClient implements Iapi {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//runServer(8888);
+		// runServer(8888);
 		Class[] parameterTypes = new Class[1];
-        parameterTypes[0] = String.class;
-        Method method1;
+		parameterTypes[0] = String.class;
+		Method method1;
 		try {
 			method1 = SpotifyClient.class.getMethod("retreive_token", parameterTypes);
-			NetworkWrapper.runServerToListen(8888,this,method1);
+			NetworkWrapper.runServerToListen(8888, this, method1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,9 +91,13 @@ public class SpotifyClient implements Iapi {
 		String encodedBytes = Base64.getEncoder().encodeToString((client_id + ":" + client_secret).getBytes());
 
 		JSONObject res_json = NetworkWrapper.post(url, body_args, "Authorization", "Basic " + encodedBytes);
-		access_token = res_json.getString("access_token");
-		//stopServer();
-
+		try {
+			access_token = res_json.getString("access_token");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// stopServer();
 	}
 
 	/*
@@ -124,7 +131,7 @@ public class SpotifyClient implements Iapi {
 		return res_json;
 	}
 
-		/**
+	/**
 	 * @param user_id
 	 */
 	public User get_user_info(String user_id) {
@@ -176,13 +183,14 @@ public class SpotifyClient implements Iapi {
 
 		String url = "https://api.spotify.com/v1/me/playlists";
 		System.out.println(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
-		List<Playlist> myPlaylists = this.parser.playlistsParse(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
-		for(int i=0;i<myPlaylists.size();i++)
-		{
-			//myPlaylists.get(i).initiliasePlayList("Authorization", "Bearer " + access_token);
+		List<Playlist> myPlaylists = this.parser
+				.playlistsParse(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
+		for (int i = 0; i < myPlaylists.size(); i++) {
+			// myPlaylists.get(i).initiliasePlayList("Authorization", "Bearer "
+			// + access_token);
 		}
 
-		//return myPlaylists;
+		// return myPlaylists;
 		return myPlaylists.get(0).getTracks();
 	}
 
@@ -201,10 +209,11 @@ public class SpotifyClient implements Iapi {
 	public List<Playlist> get_playlists(String search) {
 		String url = "https://api.spotify.com/v1/me/playlists";
 		System.out.println(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
-		List<Playlist> myPlaylists = this.parser.playlistsParse(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
-		for(int i=0;i<myPlaylists.size();i++)
-		{
-			//myPlaylists.get(i).initiliasePlayList("Authorization", "Bearer " + access_token);
+		List<Playlist> myPlaylists = this.parser
+				.playlistsParse(NetworkWrapper.get(url, "Authorization", "Bearer " + access_token));
+		for (int i = 0; i < myPlaylists.size(); i++) {
+			// myPlaylists.get(i).initiliasePlayList("Authorization", "Bearer "
+			// + access_token);
 		}
 
 		return myPlaylists;
@@ -221,5 +230,4 @@ public class SpotifyClient implements Iapi {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-	}
+}

@@ -18,11 +18,16 @@ public class SpotifyParser implements IParser {
 		Track track = new Track();
 		try {
 			track.setId(json.getString("id"));
+
 			track.setTitle(json.getString("name"));
 			track.setExternalUrl(json.getJSONObject("external_urls").getString("spotify"));
 			track.setArtist(json.getJSONArray("artists").getJSONObject(0).getString("name"));
 			track.setAlbum(json.getJSONObject("album").getString("name"));
 			track.setImage(json.getJSONObject("album").getJSONArray("images").getJSONObject(0).getString("url"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			track.setSource("Spotify");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -35,13 +40,15 @@ public class SpotifyParser implements IParser {
 	public List<Track> tracksParse(JSONObject json) {
 		List<Track> currentUserTracks = new ArrayList<Track>();
 		try {
-			JSONArray jsonobjectsArray = (JSONArray) json.get("items");
-			for (int i = 0; i < jsonobjectsArray.length(); i++) {
+		JSONArray jsonobjectsArray;
+		try {
+			jsonobjectsArray = (JSONArray) json.get("items");
 
+		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 				currentUserTracks.add(trackParse((jsonobjectsArray.getJSONObject(i)).getJSONObject("track")));
-
-			}
-		} catch (JSONException e) {
+		}} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -52,15 +59,15 @@ public class SpotifyParser implements IParser {
 		List<Track> currentUserTracks = new ArrayList<Track>();
 		try {
 			json = json.getJSONObject("tracks");
+
 			JSONArray jsonobjectsArray = (JSONArray) json.get("items");
-			for (int i = 0; i < jsonobjectsArray.length(); i++) {
+		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 				currentUserTracks.add(trackParse(jsonobjectsArray.getJSONObject(i)));
 			}
-		} catch (JSONException e) {
+} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return currentUserTracks;
 	}
 
@@ -69,6 +76,7 @@ public class SpotifyParser implements IParser {
 		Playlist myplaylist = new Playlist();
 		try {
 			myplaylist.setId(json.getString("id"));
+
 		myplaylist.setOwner(json.getJSONObject("owner").getString("id"));
 		myplaylist.setUrl(json.getJSONObject("tracks").getString("href"));
 		} catch (JSONException e) {
@@ -87,6 +95,9 @@ public class SpotifyParser implements IParser {
 
 		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 			myPlaylists.add(playlistParse(jsonobjectsArray.getJSONObject(i)));
+		}} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

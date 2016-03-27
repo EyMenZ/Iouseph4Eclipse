@@ -1,17 +1,22 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playlist {
+public class Playlist implements Serializable{
 
 	private String idUser_;
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String title;
 	private String owner;
 	private String source;
 	private String url;
 	private List<Track> tracks;
+	private User user;
 
 	/**
 	 * Constructeur par defaut
@@ -165,6 +170,20 @@ public class Playlist {
 	 */
 	public void setUrl(String myurl) {
 		this.url = myurl;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 	/**
 	 * methode permettant la recuperation de l'id de l'utilisateur proprietaire de la playlist

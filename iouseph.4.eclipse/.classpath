@@ -3,9 +3,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="httpclient-4.5.1.jar"/>
-	<classpathentry kind="lib" path="httpcore-4.4.4.jar"/>
-	<classpathentry kind="lib" path="java-json.jar"/>
-	<classpathentry kind="lib" path="org.eclipse.jface.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/httpclient-4.5.1.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/org-apache-commons-logging.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/org.eclipse.jface.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

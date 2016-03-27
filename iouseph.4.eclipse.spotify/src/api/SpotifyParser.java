@@ -29,17 +29,13 @@ public class SpotifyParser implements IParser {
 			e.printStackTrace();
 		}
 			track.setSource("Spotify");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return track;
 	}
 
 	@Override
 	public List<Track> tracksParse(JSONObject json) {
 		List<Track> currentUserTracks = new ArrayList<Track>();
-		try {
+
 		JSONArray jsonobjectsArray;
 		try {
 			jsonobjectsArray = (JSONArray) json.get("items");
@@ -55,6 +51,7 @@ public class SpotifyParser implements IParser {
 		return currentUserTracks;
 	}
 
+
 	public List<Track> tracksSearchedParse(JSONObject json) {
 		List<Track> currentUserTracks = new ArrayList<Track>();
 		try {
@@ -64,7 +61,7 @@ public class SpotifyParser implements IParser {
 		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 				currentUserTracks.add(trackParse(jsonobjectsArray.getJSONObject(i)));
 			}
-} catch (JSONException e) {
+		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -95,9 +92,6 @@ public class SpotifyParser implements IParser {
 
 		for (int i = 0; i < jsonobjectsArray.length(); i++) {
 			myPlaylists.add(playlistParse(jsonobjectsArray.getJSONObject(i)));
-		}} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

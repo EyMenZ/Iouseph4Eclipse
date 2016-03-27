@@ -17,7 +17,7 @@ public class User{
 	/**
 	 * constructeur par defaut
 	 */
-	User()
+	public User()
 	{
 		id_=uid.randomUUID().toString();
 	}

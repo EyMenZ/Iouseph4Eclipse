@@ -7,8 +7,6 @@ import java.util.List;
 public class Playlist implements Serializable{
 
 	private String idUser_;
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String title;

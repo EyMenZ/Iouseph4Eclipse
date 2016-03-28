@@ -17,6 +17,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 import events.IEventConstants;
+import model.AccountManager;
+import model.ObjectsManager;
+import model.User;
 
 
 public class SearchPart {
@@ -26,9 +29,12 @@ public class SearchPart {
 	//private TableViewer viewer;
 	private Text searchText, loginText, passwordText;
 	private Button searchButton, loginButton, disconnectButton, signinButton;
+	private AccountManager am = new AccountManager();
+	private ObjectsManager om = new ObjectsManager();
 
 	@PostConstruct
 	public void createControls(Composite parent, EMenuService menuService) {
+		am.loadAccountsInformations();
 		loginText = new Text(parent, SWT.BORDER);
 		loginText.setMessage("Login");
 		loginText.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
@@ -44,7 +50,7 @@ public class SearchPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
+				Enable(am.Enregistrement(loginText.getText(), passwordText.getText()));
 			}
 		});
 
@@ -55,16 +61,9 @@ public class SearchPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				eventBroker.post(IEventConstants.LOGIN, loginText.getText() + passwordText.getText());
+				//eventBroker.post(IEventConstants.LOGIN, loginText.getText() + passwordText.getText());
 				//TODO connect(loginText.getText() + passwordText.getText());
-				searchText.setEnabled(true);
-				searchButton.setEnabled(true);
-				loginText.setEnabled(false);
-				passwordText.setEditable(false);
-				disconnectButton.setEnabled(true);
-				loginButton.setEnabled(false);
-				signinButton.setEnabled(false);
-				eventBroker.post(IEventConstants.ENABLE_ADD_PLAYLIST, true);
+				Enable(am.Authentification(loginText.getText(), passwordText.getText()));
 			}
 		});
 
@@ -76,14 +75,9 @@ public class SearchPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				//TODO save()
-				searchText.setEnabled(false);
-				searchButton.setEnabled(false);
-				loginText.setEnabled(true);
-				passwordText.setEditable(true);
-				disconnectButton.setEnabled(false);
-				loginButton.setEnabled(true);
-				signinButton.setEnabled(true);
-				eventBroker.post(IEventConstants.ENABLE_ADD_PLAYLIST, false);
+				Enable(false);
+				am.saveAccountsInformations();
+				//om.SerializeUser(new User());
 			}
 		});
 
@@ -120,6 +114,17 @@ public class SearchPart {
 			}
 		});
 
+	}
+
+	private void Enable(boolean b){
+		searchText.setEnabled(b);
+		searchButton.setEnabled(b);
+		loginText.setEnabled(!b);
+		passwordText.setEditable(!b);
+		disconnectButton.setEnabled(b);
+		loginButton.setEnabled(!b);
+		signinButton.setEnabled(!b);
+		eventBroker.post(IEventConstants.ENABLE_ADD_PLAYLIST, b);
 	}
 
 	@Focus

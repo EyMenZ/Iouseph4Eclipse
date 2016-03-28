@@ -45,7 +45,7 @@ public class AccountManager {
 	 */
 	private boolean AccountsFileExists()
 	{
-		return new File("../Accounts", "accounts.xml").exists();
+		return new File("", "accounts.xml").exists();
 	}
 	/**
 	 * La methode charge les informations des utilisateurs dans la map.
@@ -60,7 +60,7 @@ public class AccountManager {
 		// TODO a reverifier
 
 		try {
-			File fXmlFile = new File("../Accounts/accounts.xml");
+			File fXmlFile = new File("accounts.xml");
 			Document doc = builder.parse(fXmlFile);
 			NodeList nList= doc.getElementsByTagName("User");
 
@@ -142,12 +142,12 @@ public class AccountManager {
 			elem.setAttribute("username", user.getValue().getUsername());
 			elem.setAttribute("password", user.getValue().getPassword());
 		}
-
+		doc.appendChild(rootElement);
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("../Accounts/accounts.xml"));
+			StreamResult result = new StreamResult(new File("accounts.xml"));
 			transformer.transform(source, result);
 			System.out.println("File saved!");
 		} catch (TransformerConfigurationException e) {

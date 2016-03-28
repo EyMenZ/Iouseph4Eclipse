@@ -65,7 +65,7 @@ public class User implements Serializable{
 	{
 		if(!playlists.containsKey(playlist))
 		{
-			playlists.put(playlist.getId(), playlist);
+			playlists.put(playlist.getTitle(), playlist);
 			return true;
 		}
 		return false;
@@ -130,6 +130,12 @@ public class User implements Serializable{
 
 	public Map<String, Playlist> getPlaylists() {
 		return playlists;
+	}
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", id_=" + id_ + ", username=" + username + ", password=" + password
+				+ ", playlists=" + playlists + "]";
 	}
 
 

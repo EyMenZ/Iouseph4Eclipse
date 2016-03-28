@@ -23,12 +23,11 @@ import model.AccountManager;
 import model.ObjectsManager;
 import model.User;
 
-
 public class SearchPart {
 
 	@Inject
 	private IEventBroker eventBroker;
-	//private TableViewer viewer;
+	// private TableViewer viewer;
 	private Text searchText, loginText, passwordText;
 	private Button searchButton, loginButton, disconnectButton, signinButton;
 	private User user = new User();
@@ -54,7 +53,12 @@ public class SearchPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Enable(am.Enregistrement(loginText.getText(), passwordText.getText()));
+				user = am.Enregistrement(loginText.getText(), passwordText.getText());
+				if (user != null) {
+					eventBroker.post(IEventConstants.SET_USER, user);
+					eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
+					Enable(true);
+				}
 			}
 		});
 
@@ -65,14 +69,16 @@ public class SearchPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//eventBroker.post(IEventConstants.LOGIN, loginText.getText() + passwordText.getText());
-				//TODO connect(loginText.getText() + passwordText.getText());
+				// eventBroker.post(IEventConstants.LOGIN, loginText.getText() +
+				// passwordText.getText());
+				// TODO connect(loginText.getText() + passwordText.getText());
 				String id = am.Authentification(loginText.getText(), passwordText.getText());
-				if (id != null)
+				if (id != null) {
 					user = om.DeserializeUser(id);
-				eventBroker.post(IEventConstants.SET_USER, user);
-				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
-				Enable(true);
+					eventBroker.post(IEventConstants.SET_USER, user);
+					eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
+					Enable(true);
+				}
 			}
 		});
 
@@ -83,7 +89,7 @@ public class SearchPart {
 		disconnectButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//TODO save()
+				// TODO save()
 				Enable(false);
 				am.saveAccountsInformations();
 				om.SerializeUser(user);
@@ -106,7 +112,7 @@ public class SearchPart {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.keyCode == SWT.TRAVERSE_RETURN)	{
+				if (e.keyCode == SWT.TRAVERSE_RETURN) {
 					eventBroker.post(IEventConstants.SHOW_TRACKS, searchText.getText());
 				}
 			}
@@ -126,7 +132,7 @@ public class SearchPart {
 
 	}
 
-	private void Enable(boolean b){
+	private void Enable(boolean b) {
 		searchText.setEnabled(b);
 		searchButton.setEnabled(b);
 		loginText.setEnabled(!b);

@@ -115,17 +115,17 @@ public class AccountManager {
 	 * @param password
 	 * @return
 	 */
-	public boolean Enregistrement(String username, String password)
+	public User Enregistrement(String username, String password)
 	{
 		if(usersInformations.containsKey(username))
-			return false;
+			return null;
 
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		usersInformations.put(username, user);
 
-		return true;
+		return user;
 	}
 	/**
 	 * methode permettant d'enregistrer les informations en format XML

@@ -1,5 +1,6 @@
 package parts;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,9 +10,12 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -26,6 +30,7 @@ import api.DeezerClient;
 import api.Iapi;
 import events.IEventConstants;
 import model.Playlist;
+import model.Track;
 import model.User;
 
 public class PlaylistsPart {
@@ -79,13 +84,23 @@ public class PlaylistsPart {
 			}
 		});
 
+		listViewer.addDoubleClickListener(new IDoubleClickListener() {
+
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				eventBroker.post(IEventConstants.SHOW_PLAYLIST_TRACKS, event.getSelection());
+			}
+		});
+
 	}
 
 	@Inject
 	@Optional
 	void showPlaylists(@UIEventTopic(IEventConstants.SHOW_PLAYLISTS) Object message) {
-		for (int i = 0; i < ((User) message).getPlaylists().size(); i++)
-			listViewer.add(((User) message).getPlaylists().get(i));//FIXME
+		listViewer.getList().removeAll();
+		for (int i = 0; i < user.getPlaylists().values().size(); i++){
+			listViewer.add(user.getPlaylists().values().toArray()[i]);//TODO je c pas pourquoi ça n'affiche pas les playlists !!!!
+		}
 	}
 
 	@Inject
@@ -94,7 +109,10 @@ public class PlaylistsPart {
 		Playlist playlist = new Playlist();
 		playlist.setIdUser(user.getId());
 		playlist.setTitle(message.toString());
-		listViewer.add(playlist);
+		playlist.setOwner(user.getUsername());
+		playlist.setSource("Iouseph");
+		if (user.addPlaylist(playlist))
+			listViewer.add(playlist);
 	}
 
 	@Inject
@@ -111,11 +129,16 @@ public class PlaylistsPart {
 		user = (User) message;
 	}
 
-	/*@Inject
+	@Inject
 	@Optional
-	void addTrack(@UIEventTopic(IEventConstants.ADD_TRACK) Object message) {
-		;
-	}*/
+	void addTrack(@UIEventTopic(IEventConstants.ADD_TO_SELECTED_PLAYLIST) Object message) {
+		Playlist playlist = (Playlist) listViewer.getStructuredSelection().getFirstElement();
+		playlist.addTrack((Track) ((StructuredSelection) message).getFirstElement());
+		if (!user.addPlaylist(playlist))
+			user.getPlaylists().get(playlist.getTitle())
+					.addTrack((Track) ((StructuredSelection) message).getFirstElement());
+		eventBroker.post(IEventConstants.SET_USER, user);
+	}
 
 	@Focus
 	public void onFocus() {

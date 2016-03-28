@@ -2,6 +2,7 @@ package model;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +46,9 @@ public class AccountManager {
 	 */
 	private boolean AccountsFileExists()
 	{
-		return new File("", "accounts.xml").exists();
+		URL location = AccountManager.class.getProtectionDomain().getCodeSource().getLocation();
+		String path=location.getPath();
+		return new File(path, "accounts.xml").exists();
 	}
 	/**
 	 * La methode charge les informations des utilisateurs dans la map.
@@ -60,10 +63,11 @@ public class AccountManager {
 		// TODO a reverifier
 
 		try {
-			File fXmlFile = new File("accounts.xml");
+			URL location = AccountManager.class.getProtectionDomain().getCodeSource().getLocation();
+			String path=location.getPath();
+			File fXmlFile = new File(path+"accounts.xml");
 			Document doc = builder.parse(fXmlFile);
 			NodeList nList= doc.getElementsByTagName("User");
-
 			for(int i=0;i<nList.getLength();i++)
 			{
 				Node node=nList.item(i);
@@ -138,7 +142,7 @@ public class AccountManager {
 			Element elem = doc.createElement("User");
 
 			rootElement.appendChild(elem);
-			elem.setAttribute("id", user.getValue().getUsername());
+			elem.setAttribute("id", user.getValue().getId());
 			elem.setAttribute("username", user.getValue().getUsername());
 			elem.setAttribute("password", user.getValue().getPassword());
 		}
@@ -147,7 +151,9 @@ public class AccountManager {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("accounts.xml"));
+			URL location = AccountManager.class.getProtectionDomain().getCodeSource().getLocation();
+			String path=location.getPath();
+			StreamResult result = new StreamResult(new File(path+"accounts.xml"));
 			transformer.transform(source, result);
 			System.out.println("File saved!");
 		} catch (TransformerConfigurationException e) {

@@ -24,4 +24,6 @@ public interface IEventConstants extends EventConstants{
 
 	String ADD_TRACK = "track/add";
 
+	String SHOW_PLAYLIST_TRACKS = "playlist/show/tracks";
+
 }

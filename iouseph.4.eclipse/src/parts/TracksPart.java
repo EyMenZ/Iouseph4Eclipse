@@ -14,6 +14,7 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -24,15 +25,12 @@ import api.SpotifyClient;
 import events.IEventConstants;
 import model.Playlist;
 import model.Track;
-import model.User;
 
 public class TracksPart {
 
 	@Inject
 	private IEventBroker eventBroker;
 	private TableViewer viewer;
-	private Playlist selectedPlaylist = null;
-	private User user;
 
 	@PostConstruct
 	public void createControls(Composite parent) {
@@ -58,7 +56,7 @@ public class TracksPart {
 	@Inject
 	@Optional
 	void showTracks(@UIEventTopic(IEventConstants.SHOW_TRACKS) Object message) {
-		//listViewer.add(message);
+		viewer.getTable().removeAll();
 		Iapi api = new SpotifyClient();
 		List<Track> tracks = api.get_search(message.toString());
 		Iapi api2 = new DeezerClient();
@@ -70,18 +68,15 @@ public class TracksPart {
 			}
 	}
 
-	@Inject
-	@Optional
-	void getSelectedPlaylist(@UIEventTopic(IEventConstants.SELECT_PLAYLIST) Object message) {
-		selectedPlaylist = new Playlist();//FIXME
-	}
 
 	@Inject
 	@Optional
-	void setUser(@UIEventTopic(IEventConstants.SET_USER) Object message) {
-		user = (User) message;
+	void showPlaylistTracks(@UIEventTopic(IEventConstants.SHOW_PLAYLIST_TRACKS) Object message) {
+		viewer.getTable().removeAll();
+		viewer.add(((Playlist) ((StructuredSelection) message).getFirstElement()).getTracks().toArray());
 	}
 
+	
 	@Focus
 	public void onFocus() {
 		viewer.getTable().setFocus();

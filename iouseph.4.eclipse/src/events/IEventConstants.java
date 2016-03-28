@@ -4,11 +4,11 @@ import org.osgi.service.event.EventConstants;
 
 public interface IEventConstants extends EventConstants{
 
-	String PLAY_TRACK = "PLAY";
+	String PLAY_TRACK = "track/play";
 
-	String SHOW_TRACKS = "tracks";
+	String SHOW_TRACKS = "track/show";
 
-	String SHOW_PLAYLISTS = "playlists";
+	String SHOW_PLAYLISTS = "playlist/show";
 
 	String LOGIN = "login";
 
@@ -19,5 +19,9 @@ public interface IEventConstants extends EventConstants{
 	String SELECT_PLAYLIST = "playlist/select";
 
 	String ENABLE_ADD_PLAYLIST = "playlist/add/enable";
+
+	String SET_USER = "user";
+
+	String ADD_TRACK = "track/add";
 
 }

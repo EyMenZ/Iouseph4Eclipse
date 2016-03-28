@@ -91,19 +91,19 @@ public class AccountManager {
 	 * Methode qui permet l'authentification
 	 * @param Username
 	 * @param password
-	 * @return true si les informations sont valides, false sinon
+	 * @return id si les informations sont valides, null sinon
 	 */
-	public boolean Authentification(String Username, String password)
+	public String Authentification(String Username, String password)
 	{
 		if(usersInformations.containsKey(Username))
 		{
 			if(usersInformations.get(Username).getPassword().contentEquals(password))
 			{
-				return true;
+				return usersInformations.get(Username).getId();
 			}
 		}
 
-		return false;
+		return null;
 	}
 	/**
 	 * methode permetant a un nouvel utilisateur de s'enregistrer
@@ -116,7 +116,7 @@ public class AccountManager {
 		if(usersInformations.containsKey(username))
 			return false;
 
-		User user=new User();
+		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		usersInformations.put(username, user);
@@ -159,6 +159,7 @@ public class AccountManager {
 		}
 
 	}
+
 
 }
 

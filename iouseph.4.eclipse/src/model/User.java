@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -8,7 +9,11 @@ import java.util.UUID;
  * @author youssef zemmahi, aymen zalila, marcial lopez ferrada
  *
  */
-public class User{
+public class User implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	//TODO cette classe sera implementee dans une prochaine version
 	private UUID uid = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
 	private String id_;
@@ -21,7 +26,7 @@ public class User{
 	 */
 	public User()
 	{
-		id_=uid.randomUUID().toString();
+		id_= uid.randomUUID().toString();
 		username=new String();
 		password=new String();
 	}
@@ -121,6 +126,10 @@ public class User{
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Map<String, Playlist> getPlaylists() {
+		return playlists;
 	}
 
 

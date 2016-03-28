@@ -26,6 +26,7 @@ import api.DeezerClient;
 import api.Iapi;
 import events.IEventConstants;
 import model.Playlist;
+import model.User;
 
 public class PlaylistsPart {
 
@@ -34,6 +35,7 @@ public class PlaylistsPart {
 	private ListViewer listViewer;
 	private Text newPlaylistText;
 	private Button newPlaylistButton;
+	private User user;
 
 	@PostConstruct
 	public void createControls(Composite parent) {
@@ -82,16 +84,17 @@ public class PlaylistsPart {
 	@Inject
 	@Optional
 	void showPlaylists(@UIEventTopic(IEventConstants.SHOW_PLAYLISTS) Object message) {
-		Iapi api = new DeezerClient();
-		List<Playlist> playlists = api.get_playlists(message.toString());
-		for (int i = 0; i < playlists.size(); i++)
-			listViewer.add(playlists.get(i));
+		for (int i = 0; i < ((User) message).getPlaylists().size(); i++)
+			listViewer.add(((User) message).getPlaylists().get(i));//FIXME
 	}
 
 	@Inject
 	@Optional
 	void newPlaylist(@UIEventTopic(IEventConstants.NEW_PLAYLIST) Object message) {
-		listViewer.add(message.toString());
+		Playlist playlist = new Playlist();
+		playlist.setIdUser(user.getId());
+		playlist.setTitle(message.toString());
+		listViewer.add(playlist);
 	}
 
 	@Inject
@@ -101,6 +104,18 @@ public class PlaylistsPart {
 		newPlaylistButton.setEnabled((boolean) message);
 		listViewer.getList().removeAll();
 	}
+
+	@Inject
+	@Optional
+	void setUser(@UIEventTopic(IEventConstants.SET_USER) Object message) {
+		user = (User) message;
+	}
+
+	/*@Inject
+	@Optional
+	void addTrack(@UIEventTopic(IEventConstants.ADD_TRACK) Object message) {
+		;
+	}*/
 
 	@Focus
 	public void onFocus() {

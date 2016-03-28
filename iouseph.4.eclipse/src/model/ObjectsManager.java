@@ -18,7 +18,7 @@ public class ObjectsManager {
 
 		try {
 
-			FileOutputStream fileOut = new FileOutputStream("/persistence/user." + user.getId() + ".ser");
+			FileOutputStream fileOut = new FileOutputStream("user." + user.getId() + ".ser");
 			ObjectOutputStream out;
 			out = new ObjectOutputStream(fileOut);
 			out.writeObject(user);
@@ -43,7 +43,7 @@ public class ObjectsManager {
 	{
 		User user=null;
 		try {
-			FileInputStream fileIn= new FileInputStream("/persistence/user." + userId + ".ser");
+			FileInputStream fileIn= new FileInputStream("user." + userId + ".ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			user=(User) in.readObject();
 			in.close();

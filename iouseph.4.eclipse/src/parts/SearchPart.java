@@ -3,8 +3,10 @@ package parts;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -29,12 +31,14 @@ public class SearchPart {
 	//private TableViewer viewer;
 	private Text searchText, loginText, passwordText;
 	private Button searchButton, loginButton, disconnectButton, signinButton;
+	private User user = new User();
 	private AccountManager am = new AccountManager();
 	private ObjectsManager om = new ObjectsManager();
 
 	@PostConstruct
 	public void createControls(Composite parent, EMenuService menuService) {
 		am.loadAccountsInformations();
+
 		loginText = new Text(parent, SWT.BORDER);
 		loginText.setMessage("Login");
 		loginText.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
@@ -63,7 +67,12 @@ public class SearchPart {
 			public void widgetSelected(SelectionEvent e) {
 				//eventBroker.post(IEventConstants.LOGIN, loginText.getText() + passwordText.getText());
 				//TODO connect(loginText.getText() + passwordText.getText());
-				Enable(am.Authentification(loginText.getText(), passwordText.getText()));
+				String id = am.Authentification(loginText.getText(), passwordText.getText());
+				if (id != null)
+					user = om.DeserializeUser(id);
+				eventBroker.post(IEventConstants.SET_USER, user);
+				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
+				Enable(true);
 			}
 		});
 
@@ -77,7 +86,10 @@ public class SearchPart {
 				//TODO save()
 				Enable(false);
 				am.saveAccountsInformations();
-				//om.SerializeUser(new User());
+				om.SerializeUser(user);
+				user = new User();
+				eventBroker.post(IEventConstants.SET_USER, user);
+				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
 			}
 		});
 
@@ -96,7 +108,6 @@ public class SearchPart {
 			public void keyPressed(KeyEvent e) {
 				if (e.keyCode == SWT.TRAVERSE_RETURN)	{
 					eventBroker.post(IEventConstants.SHOW_TRACKS, searchText.getText());
-					eventBroker.post(IEventConstants.SHOW_PLAYLISTS, searchText.getText());
 				}
 			}
 		});
@@ -110,7 +121,6 @@ public class SearchPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				eventBroker.post(IEventConstants.SHOW_TRACKS, searchText.getText());
-				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, searchText.getText());
 			}
 		});
 
@@ -125,6 +135,12 @@ public class SearchPart {
 		loginButton.setEnabled(!b);
 		signinButton.setEnabled(!b);
 		eventBroker.post(IEventConstants.ENABLE_ADD_PLAYLIST, b);
+	}
+
+	@Inject
+	@Optional
+	void setUser(@UIEventTopic(IEventConstants.SET_USER) Object message) {
+		user = (User) message;
 	}
 
 	@Focus

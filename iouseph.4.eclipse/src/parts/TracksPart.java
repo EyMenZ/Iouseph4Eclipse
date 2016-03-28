@@ -18,11 +18,13 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
+import api.DeezerClient;
 import api.Iapi;
 import api.SpotifyClient;
 import events.IEventConstants;
 import model.Playlist;
 import model.Track;
+import model.User;
 
 public class TracksPart {
 
@@ -30,6 +32,7 @@ public class TracksPart {
 	private IEventBroker eventBroker;
 	private TableViewer viewer;
 	private Playlist selectedPlaylist = null;
+	private User user;
 
 	@PostConstruct
 	public void createControls(Composite parent) {
@@ -58,14 +61,25 @@ public class TracksPart {
 		//listViewer.add(message);
 		Iapi api = new SpotifyClient();
 		List<Track> tracks = api.get_search(message.toString());
+		Iapi api2 = new DeezerClient();
+		List<Track> tracks2 = api2.get_search(message.toString());
 		for (int i = 0; i < tracks.size(); i++)
+			{
 			viewer.add(tracks.get(i));
+			viewer.add(tracks2.get(i));
+			}
 	}
 
 	@Inject
 	@Optional
 	void getSelectedPlaylist(@UIEventTopic(IEventConstants.SELECT_PLAYLIST) Object message) {
 		selectedPlaylist = new Playlist();//FIXME
+	}
+
+	@Inject
+	@Optional
+	void setUser(@UIEventTopic(IEventConstants.SET_USER) Object message) {
+		user = (User) message;
 	}
 
 	@Focus

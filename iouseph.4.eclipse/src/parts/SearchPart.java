@@ -19,9 +19,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
 import events.IEventConstants;
-import model.AccountManager;
-import model.ObjectsManager;
 import model.User;
+import persistance.AccountManager;
+import persistance.ObjectsManager;
 
 public class SearchPart {
 

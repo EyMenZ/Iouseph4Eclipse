@@ -1,8 +1,5 @@
 package parts;
 
-import java.io.ObjectInputStream.GetField;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -26,8 +23,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
-import api.DeezerClient;
-import api.Iapi;
 import events.IEventConstants;
 import model.Playlist;
 import model.Track;

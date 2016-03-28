@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import api.DeezerClient;
 import api.Iapi;
 import api.SpotifyClient;
+import api.SoundCloudClient;
 import events.IEventConstants;
 import model.Playlist;
 import model.Track;
@@ -60,6 +61,7 @@ public class TracksPart {
 		Iapi api = new SpotifyClient();
 		List<Track> tracks = api.get_search(message.toString());
 		Iapi api2 = new DeezerClient();
+		Iapi api3 = new SoundCloudClient();
 		List<Track> tracks2 = api2.get_search(message.toString());
 		for (int i = 0; i < tracks.size(); i++)
 			{

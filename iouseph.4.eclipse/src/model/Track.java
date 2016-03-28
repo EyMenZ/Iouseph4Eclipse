@@ -103,7 +103,7 @@ public class Track implements Serializable{
 	public String toString() {
 		return /*"Track [id=" + id + ", title=" + title + ", externalUrl=" + externalUrl + ", duration="
 				+ duration + ", artist=" + artist + ", album=" + album + ", image=" + image
-				+ ", source=" + source + "]"*/title+"\n "+ artist+"\n "+album;
+				+ ", source=" + source + "]"*/source + "-" + title+"\n "+ artist+"\n "+album;
 	}
 
 }

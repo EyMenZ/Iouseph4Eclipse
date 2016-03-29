@@ -1,5 +1,8 @@
 package parts;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -94,8 +97,9 @@ public class PlaylistsPart {
 	void showPlaylists(@UIEventTopic(IEventConstants.SHOW_PLAYLISTS) Object message) {
 		listViewer.getList().removeAll();
 		for (int i = 0; i < user.getPlaylists().values().size(); i++){
-			listViewer.add(user.getPlaylists().values().toArray()[i]);//TODO je c pas pourquoi ça n'affiche pas les playlists !!!!
+			listViewer.add((Playlist) user.getPlaylists().values().toArray()[i]);
 		}
+
 	}
 
 	@Inject

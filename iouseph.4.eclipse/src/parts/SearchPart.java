@@ -56,9 +56,9 @@ public class SearchPart {
 				user = am.Enregistrement(loginText.getText(), passwordText.getText());
 				if (user != null) {
 					eventBroker.post(IEventConstants.SET_USER, user);
-					eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
 					Enable(true);
 				}
+				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
 			}
 		});
 
@@ -76,9 +76,9 @@ public class SearchPart {
 				if (id != null) {
 					user = om.DeserializeUser(id);
 					eventBroker.post(IEventConstants.SET_USER, user);
-					eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
 					Enable(true);
 				}
+				eventBroker.post(IEventConstants.SHOW_PLAYLISTS, user);
 			}
 		});
 
